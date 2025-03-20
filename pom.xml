@@ -21,7 +21,40 @@
             <artifactId>karate-junit5</artifactId>
             <version>${karate.version}</version>
             <scope>test</scope>
-        </dependency>		
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>23.5.0.24.07</version>
+        </dependency>
+        <!-- Spring Core (para la gestión de beans y configuraciones básicas de Spring) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.3.22</version> <!-- Usa la última versión compatible -->
+        </dependency>
+
+        <!-- Spring JDBC (para JdbcTemplate y DriverManagerDataSource) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.3.22</version> <!-- Usa la última versión compatible -->
+        </dependency>
+
+        <!-- Logger SLF4J (si no tienes esto ya configurado) -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.32</version> <!-- Usa la última versión compatible -->
+        </dependency>
+        
+        <!-- Implementación de SLF4J (requiere implementación de SLF4J) -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.32</version> <!-- Usa la última versión compatible -->
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
