@@ -1,30 +1,21 @@
 function fn() {
-  var env = karate.env; // get system property 'karate.env'
-  karate.log("karate.env system property was:", env);
-  if (!env) {
-    env = "dev";
-  }
-  var config = {
-    env: env,
-    myVarName: "someValue",
+  var DbUtils = Java.type("config.DbUtils");
+  var dbConfigSat = {
+    url: "jdbc:oracle:thin:@//10.140.40.149:1521/SATPRETM",
+    username: "",
+    password: "",
+    driverClassName: "oracle.jdbc.OracleDriver",
   };
-  if (env == "dev") {
-    // customize
-    // e.g. config.foo = 'bar';
-  } else if (env == "e2e") {
-    // customize
-  }
-  var DbUtils = Java.type("examples.database.DbUtils");
-  var dbConfig = {
+
+  var dbConfigTest = {
     url: "jdbc:oracle:thin:@//127.0.0.1:1521/free",
     username: "pytdevpe",
     password: "123456",
     driverClassName: "oracle.jdbc.OracleDriver",
   };
-  var serverPort = karate.properties["server.port"];
+
   return {
-    config,
-    urlBase: "http://localhost:" + serverPort,
-    db: new DbUtils(dbConfig),
+    dbSat: new DbUtils(dbConfigSat),
+    dbTest: new DbUtils(dbConfigTest),
   };
 }

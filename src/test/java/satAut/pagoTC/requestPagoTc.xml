@@ -1,0 +1,31 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.sat.mediosdepago.tecnocom.com" xmlns:xsd="http://satNewAge.soapwebservices.ease/xsd" xmlns:xsd1="http://webservice.sat.mediosdepago.tecnocom.com/xsd" xmlns:xsd2="http://commons.soapwebservices.ease/xsd">
+    <soapenv:Header/>
+    <soapenv:Body>
+      <web:runService>
+         <!--Optional:-->
+         <web:msgEnvio>
+          <xsd:usuario>MTORRES</xsd:usuario>
+            <xsd:password>1234Sat</xsd:password>            
+            <xsd:tipoOperacion>INSERT</xsd:tipoOperacion>            
+            <xsd:entidad>0015</xsd:entidad>
+            <xsd:oficina>0101</xsd:oficina>
+            <xsd1:canal>00000002299</xsd1:canal>
+            <xsd1:clamon>152</xsd1:clamon>
+            <xsd1:codaut></xsd1:codaut>         
+            <xsd1:pan>5487405005395753</xsd1:pan>
+            <xsd1:codproon>350000</xsd1:codproon>
+            <xsd1:impfac>99</xsd1:impfac>  <!--Monto a pagar-->          
+            <xsd1:siaidcd>1000053185065629993</xsd1:siaidcd>  <!--Un valor diferente por transacción-->
+            <xsd1:tipodocpag>1</xsd1:tipodocpag>                     
+            <xsd1:tipomsgon>1200</xsd1:tipomsgon>  
+            <xsd1:codcom>000000010000001</xsd1:codcom>
+            <xsd1:modentdat>X10001K00001</xsd1:modentdat>
+            <xsd1:fecfac>
+            <xsd2:valueDate>20-03-2025</xsd2:valueDate> <!--Fecha de la transaccion-->
+            </xsd1:fecfac>
+            <xsd1:refdocpag>1234467167</xsd1:refdocpag>
+             <xsd1:refnumber>1234455828</xsd1:refnumber>  
+         </web:msgEnvio>
+      </web:runService>
+    </soapenv:Body>
+    </soapenv:Envelope>

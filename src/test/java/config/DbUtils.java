@@ -1,4 +1,4 @@
-package examples.database;
+package config;
 
 import java.util.List;
 import java.util.Map;
@@ -8,9 +8,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 public class DbUtils {
-    
-    private static final Logger logger = LoggerFactory.getLogger(DbUtils.class); 
-    
+
+    private static final Logger logger = LoggerFactory.getLogger(DbUtils.class);
+
     private final JdbcTemplate jdbc;
 
     public DbUtils(Map<String, Object> config) {
@@ -26,16 +26,16 @@ public class DbUtils {
         jdbc = new JdbcTemplate(dataSource);
         logger.info("init jdbc template: {}", url);
     }
-    
+
     public Object readValue(String query) {
         return jdbc.queryForObject(query, Object.class);
-    }    
-    
+    }
+
     public Map<String, Object> readRow(String query) {
         return jdbc.queryForMap(query);
     }
-    
+
     public List<Map<String, Object>> readRows(String query) {
         return jdbc.queryForList(query);
-    }     
+    }
 }
