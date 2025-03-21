@@ -14,8 +14,8 @@
             <xsd1:codaut></xsd1:codaut>         
             <xsd1:pan>5487405005395753</xsd1:pan>
             <xsd1:codproon>350000</xsd1:codproon>
-            <xsd1:impfac>99</xsd1:impfac>  <!--Monto a pagar-->          
-            <xsd1:siaidcd>1000053185065629993</xsd1:siaidcd>  <!--Un valor diferente por transacción-->
+            <xsd1:impfac>1</xsd1:impfac>  <!--Monto a pagar-->          
+            <xsd1:siaidcd>1000053185065629994</xsd1:siaidcd>  <!--Un valor diferente por transacción-->
             <xsd1:tipodocpag>1</xsd1:tipodocpag>                     
             <xsd1:tipomsgon>1200</xsd1:tipomsgon>  
             <xsd1:codcom>000000010000001</xsd1:codcom>
