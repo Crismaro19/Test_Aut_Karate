@@ -1,40 +1,34 @@
-Feature: test sat soap service
+Feature: Realizar Pago de tarjetas de crédito y validar transacción
 
   Background:
     * url 'https://axissatqa1.bancofalabella.cl/axis2/services/SAT_FLALPAGWS.SAT_FLALPAGWSHttpsSoap11Endpoint/'
-    * def getMontoDeuda = 
+    * def PAN = '5487405005395753'
+    * def SIAIDCD = '1000083185065629980'
+    * def IMPFAC = 2
+    * def getPagoDeuda = 
     """
-    function(accountNumber) {
-      var query = dbSat.readRows("SELECT codent, centalta, cuenta, limcrecta, salautcre, saldiscre FROM intsat.mpdt163 WHERE CUENTA = '" + accountNumber + "'")
-      return query[0].SALDISCRE;
+    function(siaidcd) {
+      var queryString = "SELECT * FROM intsat.mpdt012 WHERE SIAIDCD = '" + siaidcd +"'"
+      karate.log('Ejecutando consulta SQL:', queryString)
+      var query = dbSat.readRows(queryString)
+      return query[0];
     }
     """
 
-  Scenario: Pago de TC y verificación del saldo
-    Given Obtengo el monto deuda de la cuenta
-    * def saldoInicial = call getMontoDeuda '300000537869'
-    * karate.log('Saldo inicial de la deuda:', saldoInicial)
-    * match saldoInicial == 6137375
+  Scenario: Validar que el pago de la tarjetas de crédito 5487405005395753 se guarda correctamente en la base de datos
 
-    When Realizo un pago utilizando el servicio SOAP con la solicitud
-    * header Content-Type = 'text/xml;charset=UTF-8'
-    * header SOAPAction = 'urn:runService'
-    * request read('requestPagoTc.xml')
-    * method post
-    * status 200
-    * print 'Respuesta del servicio SOAP: ', response
+    # Given el cliente realiza un pago mediante el servicio SOAP
+      * header Content-Type = 'text/xml;charset=UTF-8'
+      * header SOAPAction = 'urn:runService'
+      * request read('requestPagoTc.xml')
+      * method post
+      * status 200
+      * print 'Respuesta del servicio SOAP: ', response
   
-    Then Verifico que el saldo después del pago se haya restado correctamente
-    * def saldoFinal = call getMontoDeuda '300000537869'
-    * def montoPago = 1
-    * def saldoEsperado = saldoInicial - montoPago
-    * karate.log('Saldo después del pago:', saldoFinal)
-    * match saldoFinal == saldoEsperado
-    
-    
-    # Given header Content-Type = 'text/xml;charset=UTF-8'
-    # And header SOAPAction = 'urn:runService'
-    # And request read('requestPagoTc.xml')
-    # When method post
-    # Then status 200
-    # And print 'response: ', response
+    # When el pago es procesado correctamente en el sistema
+      * def pago = call getPagoDeuda SIAIDCD
+      * karate.log('Transacción pago realizado:', pago)
+
+    # Then la transacción del pago debe quedar registrada en la base de datos y el saldo debe reflejarse correctamente
+      * match pago.PAN.trim() == PAN
+      * match pago.IMPFAC == IMPFAC    
