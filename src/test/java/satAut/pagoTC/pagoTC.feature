@@ -4,14 +4,11 @@ Feature: Realizar Pago de tarjetas de crédito y validar transacción
     # EndPoint consumo de servicio
     * url 'https://axissatqa1.bancofalabella.cl/axis2/services/SAT_FLALPAGWS.SAT_FLALPAGWSHttpsSoap11Endpoint/'
    
-    # Llamado de funciones para el escenario
-    * def getPagoDeuda = call read('defGetPagoDeuda.js')
-
     # Definicion de constantes para el escenario
     * def PAN = '5487405005395753'
-    * def SIAIDCD = '1000083185065629980'
-    * def IMPFAC = 2
-    * def VALUEDATE = 21-03-2025
+    * def SIAIDCD = '1000083185065629983' # Un valor diferente por transacción
+    * def IMPFAC = 103
+    * def VALUEDATE = "24-03-2025" # Cambiar fecha según día de transaccion
     
   Scenario: Validar que el pago de la tarjetas de crédito 5487405005395753 se guarda correctamente en la base de datos
 
@@ -24,7 +21,7 @@ Feature: Realizar Pago de tarjetas de crédito y validar transacción
       * print 'Respuesta del servicio SOAP: ', response
   
     # When el pago es procesado correctamente en el sistema
-      * def pago = call getPagoDeuda SIAIDCD
+      * def pago = call read('defGetPagoDeuda.js') SIAIDCD
       * karate.log('Transacción pago realizado:', pago)
 
     # Then la transacción del pago debe quedar registrada en la base de datos y el saldo debe reflejarse correctamente
