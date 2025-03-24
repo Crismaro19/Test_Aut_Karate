@@ -4,6 +4,8 @@ Feature: test soap end point
     # * url demoBaseUrl + '/soap'
     # this live url should work if you want to try this on your own
     * url 'http://www.dneonline.com/calculator.asmx'
+    * def sum1 = 3
+    * def sum2 = 2
 
   Scenario: soap 1.1
     Given request

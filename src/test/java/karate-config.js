@@ -1,3 +1,5 @@
+// Definicion de funciones globales
+
 function fn() {
   var DbUtils = Java.type("config.DbUtils");
   var dbConfigSat = {

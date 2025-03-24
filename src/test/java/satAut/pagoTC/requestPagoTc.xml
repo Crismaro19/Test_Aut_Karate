@@ -14,14 +14,14 @@
 			<xsd1:codaut></xsd1:codaut>         
 			<xsd1:pan>5487405005395753</xsd1:pan>
 			<xsd1:codproon>350000</xsd1:codproon>
-			<xsd1:impfac>2</xsd1:impfac>  <!--Monto a pagar-->           
-			<xsd1:siaidcd>1000083185065629980</xsd1:siaidcd>  <!--Un valor diferente por transacción-->
+			<xsd1:impfac>#(IMPFAC)</xsd1:impfac>  <!--Monto a pagar-->           
+			<xsd1:siaidcd>#(SIAIDCD)</xsd1:siaidcd>  <!--Un valor diferente por transacción-->
 			<xsd1:tipodocpag>5</xsd1:tipodocpag>                     
 			<xsd1:tipomsgon>1200</xsd1:tipomsgon>
 			<xsd1:codcom>000000010000001</xsd1:codcom>
 			<xsd1:modentdat>X10001K00001</xsd1:modentdat>
 			<xsd1:fecfac>
-			<xsd2:valueDate>21-03-2025</xsd2:valueDate> <!--Cambiar fecha según día de transaccion--> 
+			<xsd2:valueDate>#(VALUEDATE)</xsd2:valueDate> <!--Cambiar fecha según día de transaccion--> 
 			</xsd1:fecfac>
 			<xsd1:refdocpag>1233367167</xsd1:refdocpag>
 			 <xsd1:refnumber>1233355838</xsd1:refnumber>  

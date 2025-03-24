@@ -1,20 +1,18 @@
 Feature: Realizar Pago de tarjetas de crédito y validar transacción
 
   Background:
+    # EndPoint consumo de servicio
     * url 'https://axissatqa1.bancofalabella.cl/axis2/services/SAT_FLALPAGWS.SAT_FLALPAGWSHttpsSoap11Endpoint/'
+   
+    # Llamado de funciones para el escenario
+    * def getPagoDeuda = call read('defGetPagoDeuda.js')
+
+    # Definicion de constantes para el escenario
     * def PAN = '5487405005395753'
     * def SIAIDCD = '1000083185065629980'
     * def IMPFAC = 2
-    * def getPagoDeuda = 
-    """
-    function(siaidcd) {
-      var queryString = "SELECT * FROM intsat.mpdt012 WHERE SIAIDCD = '" + siaidcd +"'"
-      karate.log('Ejecutando consulta SQL:', queryString)
-      var query = dbSat.readRows(queryString)
-      return query[0];
-    }
-    """
-
+    * def VALUEDATE = 21-03-2025
+    
   Scenario: Validar que el pago de la tarjetas de crédito 5487405005395753 se guarda correctamente en la base de datos
 
     # Given el cliente realiza un pago mediante el servicio SOAP
