@@ -55,6 +55,8 @@
             <version>1.7.32</version> <!-- Usa la última versión compatible -->
             <scope>runtime</scope>
         </dependency>
+
+
     </dependencies>
 
     <build>
@@ -84,7 +86,7 @@
                 <configuration>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
                 </configuration>
-            </plugin>          
+            </plugin>       
         </plugins>        
     </build>       
     
