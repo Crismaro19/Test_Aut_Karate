@@ -1,18 +1,20 @@
 // Definicion de funciones globales
-
 function fn() {
+  var config = karate.read("file:.env.json");
+
   var DbUtils = Java.type("config.DbUtils");
+
   var dbConfigSat = {
-    url: "jdbc:oracle:thin:@//10.140.40.149:1521/SATPRETM",
-    username: "",
-    password: "",
+    url: config.SAT_BD_ENDPOINT,
+    username: config.SAT_BD_USUARIO,
+    password: config.SAT_BD_CLAVE,
     driverClassName: "oracle.jdbc.OracleDriver",
   };
 
   var dbConfigTest = {
-    url: "jdbc:oracle:thin:@//127.0.0.1:1521/free",
-    username: "pytdevpe",
-    password: "123456",
+    url: config.TEST_BD_ENDPOINT,
+    username: config.TEST_BD_USUARIO,
+    password: config.TEST_BD_CLAVE,
     driverClassName: "oracle.jdbc.OracleDriver",
   };
 
