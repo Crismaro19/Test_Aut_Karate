@@ -6,9 +6,9 @@ Feature: Realizar Pago de tarjetas de crédito y validar transacción
    
     # Definicion de constantes para el escenario
     * def PAN = '5487405005395753'
-    * def SIAIDCD = '1000083185065629986'
-    * def IMPFAC = 200
-    * def VALUEDATE = "24-03-2025"
+    * def SIAIDCD = '1000083185065630006'
+    * def IMPFAC = 2001
+    * def VALUEDATE = "26-03-2025"
     
   Scenario: Validar que el pago de la tarjetas de crédito 5487405005395753 se guarda correctamente en la base de datos
 
